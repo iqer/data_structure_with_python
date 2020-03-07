@@ -75,7 +75,8 @@ class Array:
         for i in range(index, self.size):
             self._data[i] = self._data[i+1]
         self._size -= 1
-        if self.size == int(self.capacity / 2):
+        # lazy缩容,让算法的整体性能更好一些
+        if self.size == int(self.capacity / 4) and int(self.capacity / 2) != 0:
             self.resize(int(self.capacity / 2))
         return item
 
