@@ -26,7 +26,8 @@ class Array:
 
     def addIndex(self, index, item):
         if index < 0 or index > self.size:
-            raise ArgumentException('Add failed. Require index >= 0 and index <= size')
+            raise ArgumentException(
+                'Add failed. Require index >= 0 and index <= size')
         if self.size == self.capacity:
             self.resize(2 * self.capacity)
         if index < self.capacity - 1 and self.size < self.capacity - 1 and \
@@ -44,12 +45,14 @@ class Array:
 
     def get(self, index):
         if index < 0 and index >= self.size:
-            raise ArgumentException('Get failed. Require index >= 0 and index <= size.')
+            raise ArgumentException(
+                'Get failed. Require index >= 0 and index <= size.')
         return self._data[index]
 
     def set(self, index, item):
         if index < 0 and index >= self.size:
-            raise ArgumentException('Set failed. Require index >= 0 and index <= size.')
+            raise ArgumentException(
+                'Set failed. Require index >= 0 and index <= size.')
         self._data[index] = item
 
     def is_contain(self, item):
@@ -66,7 +69,8 @@ class Array:
 
     def remove(self, index):
         if index < 0 or index >= self.size:
-            raise ArgumentException('Delete failed. Require index >= 0 and index <= size.')
+            raise ArgumentException(
+                'Delete failed. Require index >= 0 and index <= size.')
         item = self._data[index]
         for i in range(index, self.size):
             self._data[i] = self._data[i+1]
@@ -85,7 +89,6 @@ class Array:
         index = self.find(item)
         if index != -1:
             self.remove(index)
-
 
     def __str__(self):
         res = 'Array: size = %s, capacity = %s\n' % (self.size, self.capacity)
