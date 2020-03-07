@@ -25,16 +25,22 @@ class Array:
         self.addIndex(0, item)
 
     def addIndex(self, index, item):
-        if self.size == self.capacity:
-            raise ArgumentException('Add failed.Array is full.')
         if index < 0 or index > self.size:
             raise ArgumentException('Add failed. Require index >= 0 and index <= size')
+        if self.size == self.capacity:
+            self.resize(2 * self.capacity)
         if index < self.capacity - 1 and self.size < self.capacity - 1 and \
                 index <= self.size:
             for i in range(self.size - 1, index - 1, -1):
                 self._data[i + 1] = self._data[i]
             self._data[index] = item
             self._size += 1
+
+    def resize(self, new_capacity):
+        new_data = [None] * new_capacity
+        for i in range(self.size):
+            new_data[i] = self._data[i]
+        self._data = new_data
 
     def get(self, index):
         if index < 0 and index >= self.size:
@@ -65,6 +71,8 @@ class Array:
         for i in range(index, self.size):
             self._data[i] = self._data[i+1]
         self._size -= 1
+        if self.size == int(self.capacity / 2):
+            self.resize(int(self.capacity / 2))
         return item
 
     def removeFirst(self):
@@ -105,7 +113,7 @@ if __name__ == "__main__":
     print(arr)
     arr.addFirst(-1)
     print(arr)
-
+    arr.addFirst('abc')
     arr.remove(2)
     print(arr)
     arr.removeElement(4)
