@@ -1,4 +1,4 @@
-from stack.demo_queue import Queue
+from demo_queue import Queue
 
 
 class LoopQueue(Queue):
