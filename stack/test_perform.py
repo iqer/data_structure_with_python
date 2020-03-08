@@ -20,7 +20,7 @@ def test_queue(q, loop_count):
 
 
 if __name__ == "__main__":
-    loop_count = 10000
+    loop_count = 100000
     array_queue = Queue()
     t1 = test_queue(array_queue, loop_count)
     print('ArrayQueue, time', t1, 's')

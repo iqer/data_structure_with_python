@@ -1,4 +1,4 @@
-from array import Array
+from stack.array import Array
 
 
 class ArrayStack(Array):

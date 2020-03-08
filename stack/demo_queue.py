@@ -1,4 +1,4 @@
-from array import Array
+from my_array import Array
 
 
 class Queue(Array):
