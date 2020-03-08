@@ -28,9 +28,10 @@ class Array:
         if index < 0 or index > self.size:
             raise ArgumentException(
                 'Add failed. Require index >= 0 and index <= size')
+        # print(self.size)
         if self.size == self.capacity:
             self.resize(2 * self.capacity)
-        if index < self.capacity - 1 and self.size < self.capacity - 1 and \
+        if index < self.capacity and self.size < self.capacity and \
                 index <= self.size:
             for i in range(self.size - 1, index - 1, -1):
                 self._data[i + 1] = self._data[i]
@@ -78,8 +79,8 @@ class Array:
             raise ArgumentException(
                 'Delete failed. Require index >= 0 and index <= size.')
         item = self._data[index]
-        for i in range(index, self.size):
-            self._data[i] = self._data[i+1]
+        for i in range(index + 1, self.size):
+            self._data[i - 1] = self._data[i]
         self._size -= 1
         # lazy缩容,让算法的整体性能更好一些
         if self.size == int(self.capacity / 4) and int(self.capacity / 2) != 0:
